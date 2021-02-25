@@ -206,7 +206,11 @@ class Arduino() :
                     responses.append( ['end'] )
                 break
             if eol in result :
-                result = [result.decode('utf-8')]
+                try :
+                    result = [result.decode('utf-8')]
+                except :
+                    print( result )
+                    continue
                 responses.append( result )
                 result = b''
                 elements += 1
